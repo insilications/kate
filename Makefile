@@ -1,5 +1,5 @@
 PKG_NAME := kate
-URL = https://invent.kde.org/utilities/kate.git
+URL = /insilications/build/git-clr/kate-clr/
 ARCHIVES = 
 ARCHIVES_GIT = 
 
