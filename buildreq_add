@@ -101,6 +101,11 @@ pcre-dev
 pcre-staticdev
 pixman-dev
 pixman-staticdev
+pkgconfig(dbus-1)
+pkgconfig(libarchive)
+pkgconfig(libgcrypt)
+pkgconfig(liblzma)
+pkgconfig(libzstd)
 pkg-config
 pkg-config-dev
 plasma-framework-dev
