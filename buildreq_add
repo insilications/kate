@@ -24,6 +24,7 @@ graphite
 graphite-dev
 kactivities-dev
 kbookmarks-dev
+breeze-gtk
 kconfig-dev
 kcoreaddons-dev
 kdecoration-dev
