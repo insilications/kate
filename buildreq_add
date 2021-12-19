@@ -20,6 +20,8 @@ frameworkintegration-lib
 frameworkintegration-license
 freetype
 freetype-dev
+graphite
+graphite-dev
 kactivities-dev
 kbookmarks-dev
 kconfig-dev
@@ -82,6 +84,8 @@ libXv-dev
 libXxf86vm-dev
 libXxf86vm-lib
 libgcrypt-dev
+libgit2
+libgit2-dev
 libogg-dev
 libsndfile-dev
 libvorbis-dev
@@ -101,11 +105,6 @@ pcre-dev
 pcre-staticdev
 pixman-dev
 pixman-staticdev
-pkgconfig(dbus-1)
-pkgconfig(libarchive)
-pkgconfig(libgcrypt)
-pkgconfig(liblzma)
-pkgconfig(libzstd)
 pkg-config
 pkg-config-dev
 plasma-framework-dev
