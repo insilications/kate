@@ -1,3 +1,4 @@
+ld-linux-x86-64.so.2
 libKF5Bookmarks.so.5
 libKF5Completion.so.5
 libKF5ConfigCore.so.5
@@ -9,16 +10,15 @@ libKF5DBusAddons.so.5
 libKF5GuiAddons.so.5
 libKF5I18n.so.5
 libKF5IconThemes.so.5
+libKF5JobWidgets.so.5
 libKF5KIOCore.so.5
 libKF5KIOFileWidgets.so.5
 libKF5KIOGui.so.5
 libKF5KIOWidgets.so.5
 libKF5NewStuff.so.5
-libKF5Package.so.5
 libKF5Parts.so.5
 libKF5Plasma.so.5
 libKF5Service.so.5
-libKF5SyntaxHighlighting.so.5
 libKF5TextEditor.so.5
 libKF5TextWidgets.so.5
 libKF5Wallet.so.5
