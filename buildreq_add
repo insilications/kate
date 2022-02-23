@@ -48,6 +48,7 @@ krb5
 krb5-dev
 ktexteditor
 ktexteditor-dev
+ktexteditor-staticdev
 kwallet-dev
 libgcrypt-dev
 libgit2
