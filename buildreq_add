@@ -24,6 +24,8 @@ freetype-dev
 graphite
 graphite-dev
 kactivities-dev
+kauth
+kauth-dev
 kbookmarks-dev
 kconfig-dev
 kcoreaddons-dev
@@ -44,6 +46,7 @@ knotifyconfig-dev
 konsole
 krb5
 krb5-dev
+ktexteditor
 ktexteditor-dev
 kwallet-dev
 libgcrypt-dev
