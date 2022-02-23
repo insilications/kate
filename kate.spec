@@ -11,6 +11,10 @@ Source0  : file:///aot/build/clearlinux/packages/kate/kate-v21.12.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
+Requires: kate-bin = %{version}-%{release}
+Requires: kate-data = %{version}-%{release}
+Requires: kate-lib = %{version}-%{release}
+Requires: kate-man = %{version}-%{release}
 BuildRequires : breeze
 BuildRequires : breeze-gtk
 BuildRequires : breeze-icons
@@ -35,6 +39,8 @@ BuildRequires : freetype-dev
 BuildRequires : graphite
 BuildRequires : graphite-dev
 BuildRequires : kactivities-dev
+BuildRequires : kauth
+BuildRequires : kauth-dev
 BuildRequires : kbookmarks-dev
 BuildRequires : kconfig-dev
 BuildRequires : kcoreaddons-dev
@@ -189,13 +195,50 @@ BuildRequires : xz-dev
 %define debug_package %{nil}
 
 %description
-Kate XML plugin 0.9, 2002-07-20, Daniel Naber <daniel.naber@t-online.de>
-This plugin gives hints about what's allowed at a certain position in
-an XML file, according to the file's DTD. It will list possible
-elements, attributes, attribute values or named entities, depending
-on the cursor position. It's also possible to close the nearest
-not-yet-closed element (this function's scope is limited to some
-hundred characters).
+No detailed description available
+
+%package bin
+Summary: bin components for the kate package.
+Group: Binaries
+Requires: kate-data = %{version}-%{release}
+
+%description bin
+bin components for the kate package.
+
+
+%package data
+Summary: data components for the kate package.
+Group: Data
+
+%description data
+data components for the kate package.
+
+
+%package doc
+Summary: doc components for the kate package.
+Group: Documentation
+Requires: kate-man = %{version}-%{release}
+
+%description doc
+doc components for the kate package.
+
+
+%package lib
+Summary: lib components for the kate package.
+Group: Libraries
+Requires: kate-data = %{version}-%{release}
+
+%description lib
+lib components for the kate package.
+
+
+%package man
+Summary: man components for the kate package.
+Group: Default
+
+%description man
+man components for the kate package.
+
 
 %prep
 %setup -q -n kate
@@ -207,7 +250,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1645624344
+export SOURCE_DATE_EPOCH=1645624513
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -343,7 +386,7 @@ export LIBRARY_PATH="/usr/local/nvidia/lib64:/usr/local/nvidia/lib64/gbm:/usr/lo
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1645624344
+export SOURCE_DATE_EPOCH=1645624513
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -433,3 +476,199 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files bin
+%defattr(-,root,root,-)
+/usr/bin/kate
+/usr/bin/kwrite
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/applications/org.kde.kate.desktop
+/usr/share/applications/org.kde.kwrite.desktop
+/usr/share/icons/hicolor/128x128/apps/kate.png
+/usr/share/icons/hicolor/128x128/apps/kwrite.png
+/usr/share/icons/hicolor/150x150/apps/kate.png
+/usr/share/icons/hicolor/16x16/apps/kate.png
+/usr/share/icons/hicolor/16x16/apps/kwrite.png
+/usr/share/icons/hicolor/22x22/apps/kate.png
+/usr/share/icons/hicolor/22x22/apps/kwrite.png
+/usr/share/icons/hicolor/256x256/apps/kate.png
+/usr/share/icons/hicolor/310x310/apps/kate.png
+/usr/share/icons/hicolor/32x32/apps/kate.png
+/usr/share/icons/hicolor/32x32/apps/kwrite.png
+/usr/share/icons/hicolor/44x44/apps/kate.png
+/usr/share/icons/hicolor/48x48/apps/kate.png
+/usr/share/icons/hicolor/48x48/apps/kwrite.png
+/usr/share/icons/hicolor/512x512/apps/kate.png
+/usr/share/icons/hicolor/64x64/apps/kate.png
+/usr/share/icons/hicolor/64x64/apps/kwrite.png
+/usr/share/icons/hicolor/scalable/apps/kate.svg
+/usr/share/icons/hicolor/scalable/apps/kwrite.svgz
+/usr/share/kateproject/kateproject.example
+/usr/share/katexmltools/html4-loose.dtd.xml
+/usr/share/katexmltools/html4-strict.dtd.xml
+/usr/share/katexmltools/kcfg.dtd.xml
+/usr/share/katexmltools/kde-docbook.dtd.xml
+/usr/share/katexmltools/kpartgui.dtd.xml
+/usr/share/katexmltools/language.dtd.xml
+/usr/share/katexmltools/simplify_dtd.xsl
+/usr/share/katexmltools/testcases.xml
+/usr/share/katexmltools/xhtml1-frameset.dtd.xml
+/usr/share/katexmltools/xhtml1-strict.dtd.xml
+/usr/share/katexmltools/xhtml1-transitional.dtd.xml
+/usr/share/katexmltools/xslt-1.0.dtd.xml
+/usr/share/kservices5/plasma-applet-org.kde.plasma.katesessions.desktop
+/usr/share/kservices5/plasma-dataengine-katesessions.desktop
+/usr/share/metainfo/org.kde.kate.appdata.xml
+/usr/share/metainfo/org.kde.kwrite.appdata.xml
+/usr/share/metainfo/org.kde.plasma.katesessions.appdata.xml
+/usr/share/plasma/plasmoids/org.kde.plasma.katesessions/contents/ui/KateSessionsItemDelegate.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.katesessions/contents/ui/Menu.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.katesessions/contents/ui/katesessions.qml
+/usr/share/plasma/plasmoids/org.kde.plasma.katesessions/metadata.desktop
+/usr/share/plasma/plasmoids/org.kde.plasma.katesessions/metadata.json
+/usr/share/plasma/services/org.kde.plasma.katesessions.operations
+
+%files doc
+%defattr(0644,root,root,0755)
+/usr/share/doc/HTML/en/kate/arrow-down-double-22.png
+/usr/share/doc/HTML/en/kate/arrow-up-double-22.png
+/usr/share/doc/HTML/en/kate/backtrace-settings.png
+/usr/share/doc/HTML/en/kate/bookmarks-22.png
+/usr/share/doc/HTML/en/kate/build-output.png
+/usr/share/doc/HTML/en/kate/close-except-like.png
+/usr/share/doc/HTML/en/kate/configdialog01.png
+/usr/share/doc/HTML/en/kate/configure-22.png
+/usr/share/doc/HTML/en/kate/configure-shortcuts-22.png
+/usr/share/doc/HTML/en/kate/configuring.docbook
+/usr/share/doc/HTML/en/kate/ctags-global-setting.png
+/usr/share/doc/HTML/en/kate/ctags-session-setting.png
+/usr/share/doc/HTML/en/kate/development.docbook
+/usr/share/doc/HTML/en/kate/dialog-ok-22.png
+/usr/share/doc/HTML/en/kate/document-new-22.png
+/usr/share/doc/HTML/en/kate/document-open-22.png
+/usr/share/doc/HTML/en/kate/document-save-22.png
+/usr/share/doc/HTML/en/kate/document-save-as-22.png
+/usr/share/doc/HTML/en/kate/documentswitcher.png
+/usr/share/doc/HTML/en/kate/edit-copy-22.png
+/usr/share/doc/HTML/en/kate/edit-delete-22.png
+/usr/share/doc/HTML/en/kate/edit-select-all-22.png
+/usr/share/doc/HTML/en/kate/format-text-superscript-22.png
+/usr/share/doc/HTML/en/kate/fundamentals.docbook
+/usr/share/doc/HTML/en/kate/games-config-options-22.png
+/usr/share/doc/HTML/en/kate/gdb-call-stack.png
+/usr/share/doc/HTML/en/kate/gdb-io.png
+/usr/share/doc/HTML/en/kate/gdb-locals.png
+/usr/share/doc/HTML/en/kate/gdb-output.png
+/usr/share/doc/HTML/en/kate/gdb-settings.png
+/usr/share/doc/HTML/en/kate/go-down-22.png
+/usr/share/doc/HTML/en/kate/go-next-22.png
+/usr/share/doc/HTML/en/kate/go-previous-22.png
+/usr/share/doc/HTML/en/kate/go-up-22.png
+/usr/share/doc/HTML/en/kate/index.cache.bz2
+/usr/share/doc/HTML/en/kate/index.docbook
+/usr/share/doc/HTML/en/kate/kate.png
+/usr/share/doc/HTML/en/kate/kateeditexternaltool.png
+/usr/share/doc/HTML/en/kate/kateexternaltools.png
+/usr/share/doc/HTML/en/kate/kateexternaltoolvariablechooser.png
+/usr/share/doc/HTML/en/kate/katevariableexpansion.png
+/usr/share/doc/HTML/en/kate/list-add-22.png
+/usr/share/doc/HTML/en/kate/mascot_kate.png
+/usr/share/doc/HTML/en/kate/menus.docbook
+/usr/share/doc/HTML/en/kate/plugins.docbook
+/usr/share/doc/HTML/en/kate/project-completition.png
+/usr/share/doc/HTML/en/kate/project-configure.png
+/usr/share/doc/HTML/en/kate/project-current-analysis.png
+/usr/share/doc/HTML/en/kate/project-quickopen.png
+/usr/share/doc/HTML/en/kate/project-search.png
+/usr/share/doc/HTML/en/kate/project-view.png
+/usr/share/doc/HTML/en/kate/snippets-form.png
+/usr/share/doc/HTML/en/kate/snippets-panel.png
+/usr/share/doc/HTML/en/kate/snippets-repository.png
+/usr/share/doc/HTML/en/kate/snippets-usage.png
+/usr/share/doc/HTML/en/kate/symbolviewer-settings.png
+/usr/share/doc/HTML/en/kate/system-switch-user-22.png
+/usr/share/doc/HTML/en/kate/tab-duplicate-22.png
+/usr/share/doc/HTML/en/kate/tab-new-22.png
+/usr/share/doc/HTML/en/kate/textfilter.png
+/usr/share/doc/HTML/en/kate/view-refresh-22.png
+/usr/share/doc/HTML/en/kate/view-split-left-right-22.png
+/usr/share/doc/HTML/en/katepart/advanced.docbook
+/usr/share/doc/HTML/en/katepart/arrow-down-double-22.png
+/usr/share/doc/HTML/en/katepart/arrow-up-double-22.png
+/usr/share/doc/HTML/en/katepart/breeze-color-theme-preview.png
+/usr/share/doc/HTML/en/katepart/color-themes-gui-breeze-dark-default-text-styles.png
+/usr/share/doc/HTML/en/katepart/color-themes-gui-default-text-styles.png
+/usr/share/doc/HTML/en/katepart/comma-to.png
+/usr/share/doc/HTML/en/katepart/configure-shortcuts-22.png
+/usr/share/doc/HTML/en/katepart/configuring.docbook
+/usr/share/doc/HTML/en/katepart/development.docbook
+/usr/share/doc/HTML/en/katepart/edit-select-all-22.png
+/usr/share/doc/HTML/en/katepart/editor-colors-BackgroundColor.png
+/usr/share/doc/HTML/en/katepart/editor-colors-BracketMatching.png
+/usr/share/doc/HTML/en/katepart/editor-colors-CodeFolding.png
+/usr/share/doc/HTML/en/katepart/editor-colors-CurrentLine.png
+/usr/share/doc/HTML/en/katepart/editor-colors-IconBorder.png
+/usr/share/doc/HTML/en/katepart/editor-colors-IndentationLine.png
+/usr/share/doc/HTML/en/katepart/editor-colors-MarkBookmark.png
+/usr/share/doc/HTML/en/katepart/editor-colors-ModifiedLines.png
+/usr/share/doc/HTML/en/katepart/editor-colors-ReplaceHighlight.png
+/usr/share/doc/HTML/en/katepart/editor-colors-SearchHighlight.png
+/usr/share/doc/HTML/en/katepart/editor-colors-SpellChecking.png
+/usr/share/doc/HTML/en/katepart/editor-colors-TabMarker.png
+/usr/share/doc/HTML/en/katepart/editor-colors-Template.png
+/usr/share/doc/HTML/en/katepart/editor-colors-TemplateAndSnippets.png
+/usr/share/doc/HTML/en/katepart/editor-colors-TemplateReadOnlyPlaceholder.png
+/usr/share/doc/HTML/en/katepart/editor-colors-TextSelection.png
+/usr/share/doc/HTML/en/katepart/editor-colors-WordWrapMarker.png
+/usr/share/doc/HTML/en/katepart/format-text-superscript-22.png
+/usr/share/doc/HTML/en/katepart/fundamentals.docbook
+/usr/share/doc/HTML/en/katepart/highlighted.png
+/usr/share/doc/HTML/en/katepart/index.cache.bz2
+/usr/share/doc/HTML/en/katepart/index.docbook
+/usr/share/doc/HTML/en/katepart/kf5-ksyntaxhighlighting.png
+/usr/share/doc/HTML/en/katepart/line-modification-system.png
+/usr/share/doc/HTML/en/katepart/menus.docbook
+/usr/share/doc/HTML/en/katepart/minimap.png
+/usr/share/doc/HTML/en/katepart/part.docbook
+/usr/share/doc/HTML/en/katepart/regular-expressions.docbook
+/usr/share/doc/HTML/en/katepart/unhighlighted.png
+/usr/share/doc/HTML/en/katepart/vi.docbook
+/usr/share/doc/HTML/en/kwrite/index.cache.bz2
+/usr/share/doc/HTML/en/kwrite/index.docbook
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/qt5/plugins/ktexteditor/cmaketoolsplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/compilerexplorer.so
+/usr/lib64/qt5/plugins/ktexteditor/externaltoolsplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katebacktracebrowserplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katebuildplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katecloseexceptplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katecolorpickerplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katectagsplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katefilebrowserplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katefiletreeplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/kategdbplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/kategitblameplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katekonsoleplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/kateprojectplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katereplicodeplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katesearchplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katesnippetsplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katesqlplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katesymbolviewerplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katexmlcheckplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/katexmltoolsplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/ktexteditorpreviewplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/latexcompletionplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/lspclientplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/rainbowparens.so
+/usr/lib64/qt5/plugins/ktexteditor/tabswitcherplugin.so
+/usr/lib64/qt5/plugins/ktexteditor/textfilterplugin.so
+/usr/lib64/qt5/plugins/plasma/dataengine/plasma_engine_katesessions.so
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/kate.1
